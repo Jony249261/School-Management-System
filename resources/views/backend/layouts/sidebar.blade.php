@@ -74,7 +74,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item {{($prefix=='/profiles')?'menu-open':''}}">
+          <li class="nav-item {{($prefix=='/setups')?'menu-open':''}}">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -84,7 +84,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('profiles.view')}}" class="nav-link {{($route=='profiles.view')?'active':''}}">
+                <a href="{{route('profiles.view')}}" class="nav-link {{($route=='setups.student.class.view')?'active':''}}">
                   <i class="far fa-user-circle nav-icon"></i>
                   <p>Student Class</p>
                 </a>
