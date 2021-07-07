@@ -84,9 +84,27 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('profiles.view')}}" class="nav-link {{($route=='setups.student.class.view')?'active':''}}">
+                <a href="{{route('setups.student.class.view')}}" class="nav-link {{($route=='setups.student.class.view')?'active':''}}">
                   <i class="far fa-user-circle nav-icon"></i>
                   <p>Student Class</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('setups.student.year.view')}}" class="nav-link {{($route=='setups.student.year.view')?'active':''}}">
+                  <i class="far fa-user-circle nav-icon"></i>
+                  <p>Year</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('setups.student.group.view')}}" class="nav-link {{($route=='setups.student.group.view')?'active':''}}">
+                  <i class="far fa-user-circle nav-icon"></i>
+                  <p>Group</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('setups.student.shift.view')}}" class="nav-link {{($route=='setups.student.shift.view')?'active':''}}">
+                  <i class="far fa-user-circle nav-icon"></i>
+                  <p>Shift</p>
                 </a>
               </li>
             </ul>
