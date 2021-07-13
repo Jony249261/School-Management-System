@@ -107,6 +107,19 @@
                   <p>Shift</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('setups.fee.category.view')}}" class="nav-link {{($route=='setups.fee.category.view')?'active':''}}">
+                  <i class="far fa-user-circle nav-icon"></i>
+                  <p>Fee Category</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{route('setups.fee.amount.view')}}" class="nav-link {{($route=='setups.fee.amount.view')?'active':''}}">
+                  <i class="far fa-user-circle nav-icon"></i>
+                  <p>Fee Category Amount</p>
+                </a>
+              </li>
             </ul>
           </li>
         </ul>

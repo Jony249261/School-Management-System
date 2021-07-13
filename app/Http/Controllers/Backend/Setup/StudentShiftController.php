@@ -19,7 +19,7 @@ class StudentShiftController extends Controller
 
     public function store(Request $request){
         $request->validate([
-            'name' => 'required|unique:student_groups,name',
+            'name' => 'required|unique:student_shifts,name',
             ]);
         $shift = new StudentShift();
         $shift->name = $request->name;
