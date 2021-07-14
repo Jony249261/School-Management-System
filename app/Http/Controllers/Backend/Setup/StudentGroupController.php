@@ -34,10 +34,11 @@ class StudentGroupController extends Controller
     }
 
     public function update(Request $request, $id){
-        $request->validate([
-            'name' => 'required',
-            ]);
+        
         $group = StudentGroup::find($id);
+        $request->validate([
+            'name' => 'required|unique:student_groups,name,'.$group->id
+            ]);
         $group->name = $request->name;
         $group->save();
         Session::flash('success','Group Updated Successfully');

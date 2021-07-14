@@ -19,7 +19,7 @@ class StudentShiftController extends Controller
 
     public function store(Request $request){
         $request->validate([
-            'name' => 'required|unique:student_shifts,name',
+            'name' => 'required|unique:student_shifts,name,'
             ]);
         $shift = new StudentShift();
         $shift->name = $request->name;
@@ -34,10 +34,10 @@ class StudentShiftController extends Controller
     }
 
     public function update(Request $request, $id){
-        $request->validate([
-            'name' => 'required',
-            ]);
         $shift = StudentShift::find($id);
+        $request->validate([
+            'name' => 'required|unique:student_shifts,name,'.$shift->id
+            ]);
         $shift->name = $request->name;
         $shift->save();
         Session::flash('success','Shift Updated Successfully');

@@ -8,12 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Manage Fee Category Amount</h1>
+            <h1 class="m-0">Manage Subject</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Fee Amount</li>
+              <li class="breadcrumb-item active">Subject</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -35,8 +35,8 @@
               <div class="card-header bg-primary">
                 <h3>
                   <i class="fas fa-users mr-1"></i>
-                  Fee Amount List
-                  <a href="{{route('setups.fee.amount.add')}}" class="btn btn-success float-right"><i class="fas fa-plus-circle mr-1"></i> Add Fee Amount</a>
+                  Subject List
+                  <a href="{{route('setups.subject.add')}}" class="btn btn-success float-right"><i class="fas fa-plus-circle mr-1"></i> Add Subject</a>
                 </h3>
               </div><!-- /.card-header -->
               <div class="card-body">
@@ -44,7 +44,7 @@
                   <thead>
                   <tr>
                    <th>Sl</th>
-                    <th>Fee Category</th>
+                    <th>Name</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -52,11 +52,10 @@
                   @foreach($data as $key =>$row)
                   <tr>
                     <th>{{$key+1}}</th>
-                    <th>{{$row->fee_category->name}}</th>
+                    <th>{{$row->name}}</th>
                     <th>
-                        <a href="{{route('setups.fee.amount.edit',$row->fee_category_id)}}" class="btn btn-primary btn-sm"> <i class="fa fa-edit"></i></a>
-                        <a href="{{route('setups.fee.amount.details',$row->fee_category_id)}}" class="btn btn-success btn-sm"> <i class="fa fa-eye"></i></a>
-                        <a href="{{route('setups.fee.amount.delete',$row->fee_category_id)}}" id="delete" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i></a>
+                        <a href="{{route('setups.subject.edit',$row->id)}}" class="btn btn-info btn-sm"> <i class="fa fa-edit"></i></a>
+                        <a href="{{route('setups.subject.delete',$row->id)}}" id="delete" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i></a>
                     </th>
                   </tr>
                   @endforeach

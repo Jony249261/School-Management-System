@@ -96,8 +96,56 @@ Route::prefix('setups')->group(function(){
     Route::post('/fee/amount/store', 'Backend\Setup\FeeAmountController@store')->name('setups.fee.amount.store');
     Route::get('/fee/amount/edit/{id}', 'Backend\Setup\FeeAmountController@edit')->name('setups.fee.amount.edit');
     Route::post('/fee/amount/update/{id}', 'Backend\Setup\FeeAmountController@update')->name('setups.fee.amount.update');
+    Route::get('/fee/amount/details/{id}', 'Backend\Setup\FeeAmountController@details')->name('setups.fee.amount.details');
     Route::get('/fee/amount/delete/{id}', 'Backend\Setup\FeeAmountController@delete')->name('setups.fee.amount.delete');
 
+
+    //Exam Type
+    Route::get('/exam/type/view', 'Backend\Setup\ExamTypeController@view')->name('setups.exam.type.view');
+    Route::get('/exam/type/add', 'Backend\Setup\ExamTypeController@add')->name('setups.exam.type.add');
+    Route::post('/exam/type/store', 'Backend\Setup\ExamTypeController@store')->name('setups.exam.type.store');
+    Route::get('/exam/type/edit/{id}', 'Backend\Setup\ExamTypeController@edit')->name('setups.exam.type.edit');
+    Route::post('/exam/type/update/{id}', 'Backend\Setup\ExamTypeController@update')->name('setups.exam.type.update');
+    Route::get('/exam/type/delete/{id}', 'Backend\Setup\ExamTypeController@delete')->name('setups.exam.type.delete');
+
+    //Subject
+    Route::get('/subject/view', 'Backend\Setup\SubjectController@view')->name('setups.subject.view');
+    Route::get('/subject/add', 'Backend\Setup\SubjectController@add')->name('setups.subject.add');
+    Route::post('/subject/store', 'Backend\Setup\SubjectController@store')->name('setups.subject.store');
+    Route::get('/subject/edit/{id}', 'Backend\Setup\SubjectController@edit')->name('setups.subject.edit');
+    Route::post('/subject/update/{id}', 'Backend\Setup\SubjectController@update')->name('setups.subject.update');
+    Route::get('/subject/delete/{id}', 'Backend\Setup\SubjectController@delete')->name('setups.subject.delete');
+
+
+    //Assign Subject
+    Route::get('/assign/subject/view', 'Backend\Setup\AssignSubjectController@view')->name('setups.assign.subject.view');
+    Route::get('/assign/subject/add', 'Backend\Setup\AssignSubjectController@add')->name('setups.assign.subject.add');
+    Route::post('/assign/subject/store', 'Backend\Setup\AssignSubjectController@store')->name('setups.assign.subject.store');
+    Route::get('/assign/subject/edit/{id}', 'Backend\Setup\AssignSubjectController@edit')->name('setups.assign.subject.edit');
+    Route::post('/assign/subject/update/{id}', 'Backend\Setup\AssignSubjectController@update')->name('setups.assign.subject.update');
+    Route::get('/assign/subject/details/{id}', 'Backend\Setup\AssignSubjectController@details')->name('setups.assign.subject.details');
+    Route::get('/assign/subject/delete/{id}', 'Backend\Setup\AssignSubjectController@delete')->name('setups.assign.subject.delete');
+
+
+    //Subject
+    Route::get('/designation/view', 'Backend\Setup\DesignationController@view')->name('setups.designation.view');
+    Route::get('/designation/add', 'Backend\Setup\DesignationController@add')->name('setups.designation.add');
+    Route::post('/designation/store', 'Backend\Setup\DesignationController@store')->name('setups.designation.store');
+    Route::get('/designation/edit/{id}', 'Backend\Setup\DesignationController@edit')->name('setups.designation.edit');
+    Route::post('/designation/update/{id}', 'Backend\Setup\DesignationController@update')->name('setups.designation.update');
+    Route::get('/designation/delete/{id}', 'Backend\Setup\DesignationController@delete')->name('setups.designation.delete');
+
+});
+
+
+//Users routes
+Route::prefix('students')->group(function(){
+    Route::get('/reg/view', 'Backend\Student\StudentRegController@view')->name('students.registration.view');
+    Route::get('/reg/add', 'Backend\Student\StudentRegController@add')->name('students.registration.add');
+    Route::post('/reg/store', 'Backend\Student\StudentRegController@store')->name('students.registration.store');
+    Route::get('/reg/edit/{id}', 'Backend\Student\StudentRegController@edit')->name('students.registration.edit');
+    Route::post('/reg/update/{id}', 'Backend\Student\StudentRegController@update')->name('students.registration.update');
+    Route::get('/reg/delete/{id}', 'Backend\Student\StudentRegController@delete')->name('students.registration.delete');
 });
 
 

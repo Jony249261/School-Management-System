@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\StudentClass;
+use App\Model\FeeCategoryAmount;
+use App\Model\AssignSubject;
 use DB;
 class StudentClassController extends Controller
 {
@@ -34,10 +36,12 @@ class StudentClassController extends Controller
     }
 
     public function update(Request $request, $id){
-        $request->validate([
-            'name' => 'required',
-            ]);
+
         $class = StudentClass::find($id);
+        $request->validate([
+            'name' => 'required|unique:student_classes,name,'.$class->id
+            ]);
+        
         $class->name = $request->name;
         $class->save();
         Session::flash('success','Class Updated Successfully');
@@ -46,6 +50,8 @@ class StudentClassController extends Controller
 
     public function delete($id){
         $class = StudentClass::find($id)->delete();
+        $amount = FeeCategoryAmount::where('class_id',$id)->delete();
+        $assign_subject = AssignSubject::where('class_id',$id)->delete();
         Session::flash('success','Class Deleted Successfully');
         return redirect()->route('setups.student.class.view');
     }

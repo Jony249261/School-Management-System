@@ -120,6 +120,48 @@
                   <p>Fee Category Amount</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('setups.exam.type.view')}}" class="nav-link {{($route=='setups.exam.type.view')?'active':''}}">
+                  <i class="far fa-user-circle nav-icon"></i>
+                  <p>Exam Type</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('setups.subject.view')}}" class="nav-link {{($route=='setups.subject.view')?'active':''}}">
+                  <i class="far fa-user-circle nav-icon"></i>
+                  <p>Subject View</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('setups.assign.subject.view')}}" class="nav-link {{($route=='setups.assign.subject.view')?'active':''}}">
+                  <i class="far fa-user-circle nav-icon"></i>
+                  <p>Assign Subject</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('setups.designation.view')}}" class="nav-link {{($route=='setups.designation.view')?'active':''}}">
+                  <i class="far fa-user-circle nav-icon"></i>
+                  <p>Designation</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item {{($prefix=='/students')?'menu-open':''}}">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Manage Studnts
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('students.registration.view')}}" class="nav-link {{($route=='students.registration.view')?'active':''}}">
+                  <i class="far fa-user-circle nav-icon"></i>
+                  <p>Students Registration</p>
+                </a>
+              </li>
+              
             </ul>
           </li>
         </ul>

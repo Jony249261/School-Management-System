@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\FeeCategory;
+use App\Model\FeeCategoryAmount;
 use DB;
 
 class FeeCategoryController extends Controller
@@ -35,10 +36,11 @@ class FeeCategoryController extends Controller
     }
 
     public function update(Request $request, $id){
-        $request->validate([
-            'name' => 'required',
-            ]);
         $fee = FeeCategory::find($id);
+        $request->validate([
+            'name' => 'required|unique:feecategories,name,'.$fee->id
+            ]);
+        
         $fee->name = $request->name;
         $fee->save();
         Session::flash('success','Fee Category Updated Successfully');
@@ -47,6 +49,7 @@ class FeeCategoryController extends Controller
 
     public function delete($id){
         $fee = FeeCategory::find($id)->delete();
+        $fee_category = FeeCategoryAmount::where('fee_category_id',$id)->delete();
         Session::flash('success','Fee Category Deleted Successfully');
         return redirect()->route('setups.fee.category.view');
     }

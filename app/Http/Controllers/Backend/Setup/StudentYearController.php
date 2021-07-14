@@ -35,10 +35,11 @@ class StudentYearController extends Controller
     }
 
     public function update(Request $request, $id){
-        $request->validate([
-            'name' => 'required|numeric|min:4',
-            ]);
+        
         $year = StudentYear::find($id);
+        $request->validate([
+            'name' => 'required|numeric|unique:student_years,name,'.$year->id
+            ]);
         $year->name = $request->name;
         $year->save();
         Session::flash('success','Year Updated Successfully');

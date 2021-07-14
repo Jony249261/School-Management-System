@@ -47,24 +47,45 @@ class FeeAmountController extends Controller
     }
 
     public function edit($id){
-        $fee = FeeCategory::findorFail($id);
-        return view('backend.setup.fee_category.edit-fee-category', compact('fee'));
+        $data = FeeCategoryAmount::where('fee_category_id',$id)->get();
+        $fee = FeeCategory::all();
+        $class = StudentClass::all();
+        return view('backend.setup.fee_amount.edit-fee-amount', compact('data','fee', 'class'));
     }
 
     public function update(Request $request, $id){
-        $request->validate([
-            'name' => 'required',
-            ]);
-        $fee = FeeCategory::find($id);
-        $fee->name = $request->name;
-        $fee->save();
-        Session::flash('success','Fee Category Updated Successfully');
-        return redirect()->route('setups.fee.category.view');
+        
+            if($request->class_id == NULL){
+                Session::flash('error','Sorry! You Dont Select Any Class!');
+                return redirect()->back();
+            }else{
+                FeeCategoryAmount::where('fee_category_id',$id)->delete();
+                $countClass = count($request->class_id);
+            
+                for($i=0; $i<$countClass; $i++){
+                    $fee_amount = new FeeCategoryAmount();
+                    $fee_amount->fee_category_id = $request->fee_category_id;
+                    $fee_amount->class_id = $request->class_id[$i];
+                    $fee_amount->amount = $request->amount[$i];
+                    $fee_amount->save();
+                }
+                
+            }
+        
+
+            Session::flash('success','Fee Category Amount Updated Successfully');
+        return redirect()->route('setups.fee.amount.view');
+    }
+
+    public function details($id){
+        $data = FeeCategoryAmount::where('fee_category_id',$id)->get();
+        
+        return view('backend.setup.fee_amount.details-fee-amount', compact('data'));
     }
 
     public function delete($id){
-        $fee = FeeCategory::find($id)->delete();
-        Session::flash('success','Fee Category Deleted Successfully');
-        return redirect()->route('setups.fee.category.view');
+        $data = FeeCategoryAmount::where('fee_category_id',$id)->delete();
+        Session::flash('success','Fee Category Amount Deleted Successfully');
+        return redirect()->route('setups.fee.amount.view');
     }
 }
