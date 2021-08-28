@@ -32,7 +32,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           
-               @if(Auth::user()->usertype=='Admin')
+               @if(Auth::user()->role=='Admin')
           <li class="nav-item  {{($prefix=='/users')?'menu-open':''}}">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -159,6 +159,13 @@
                 <a href="{{route('students.registration.view')}}" class="nav-link {{($route=='students.registration.view')?'active':''}}">
                   <i class="far fa-user-circle nav-icon"></i>
                   <p>Students Registration</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{route('students.roll.view')}}" class="nav-link {{($route=='students.roll.view')?'active':''}}">
+                  <i class="far fa-user-circle nav-icon"></i>
+                  <p>Role Generate</p>
                 </a>
               </li>
               

@@ -1,8 +1,10 @@
 <!-- jQuery -->
 
+  
 <!-- jQuery UI 1.11.4 -->
 <script src="{{asset('public/backend/plugins')}}/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
@@ -33,6 +35,7 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('public/backend/dist')}}/js/pages/dashboard.js"></script>
 
+
 <script src="{{asset('public/backend/plugins')}}/datatables/jquery.dataTables.min.js"></script>
 <script src="{{asset('public/backend/plugins')}}/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="{{asset('public/backend/plugins')}}/datatables-responsive/js/dataTables.responsive.min.js"></script>
@@ -56,6 +59,9 @@
     });
   });
 </script>
+<!-- Datepicker -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <!-- jquery-validation -->
 <script src="{{asset('public/backend/plugins')}}/jquery-validation/jquery.validate.min.js"></script>
 <script src="{{asset('public/backend/plugins')}}/jquery-validation/additional-methods.min.js"></script>
@@ -131,7 +137,7 @@ $(function () {
       name: {
         required: true,
       },
-      usertype: {
+      role: {
         required: true,
       },
       password2: {
@@ -151,8 +157,8 @@ $(function () {
       name: {
         required: "Please Enter User name",
       },
-      usertype: {
-        required: "Please Select User Type",
+      role: {
+        required: "Please Select User Role",
       },
       password: {
         required: "Please provide a password",
@@ -189,3 +195,4 @@ $(function () {
     });
   });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.21.0/js/components/notify.min.js"></script>

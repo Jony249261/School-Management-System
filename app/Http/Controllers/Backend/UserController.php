@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function view(){
-        $data = User::all();
+        $data = User::where('usertype','Admin')->get();
         return view('backend.user.view-user', compact('data'));
     }
 
@@ -21,12 +21,17 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|unique:users,email',
+
             ]);
+        
+        $code = rand(0000,9999);
         $user = new User();
-        $user->usertype = $request->usertype;
+        $user->usertype = 'Admin';
+        $user->role = $request->role;
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = bcrypt($request->password);
+        $user->password = bcrypt($code);
+        $user->code = $code;
         $user->save();
         Session::flash('success','User Added Successfully');
         return redirect()->route('users.view');
@@ -39,7 +44,7 @@ class UserController extends Controller
 
     public function update(Request $request, $id){
         $user = User::find($id);
-        $user->usertype = $request->usertype;
+        $user->role = $request->role;
         $user->name = $request->name;
         $user->email = $request->email;
         $user->save();

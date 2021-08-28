@@ -1,4 +1,6 @@
  <!-- Google Font: Source Sans Pro -->
+ <script src="{{asset('public/backend/plugins')}}/jquery/jquery.min.js"></script>
+ 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{asset('public/backend/plugins')}}/fontawesome-free/css/all.min.css">
@@ -21,6 +23,10 @@
     <link rel="stylesheet" href="{{asset('public/backend/plugins')}}/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="{{asset('public/backend/plugins')}}/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="{{asset('public/backend/plugins')}}/datatables-buttons/css/buttons.bootstrap4.min.css">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
- 
-  <script src="{{asset('public/backend/plugins')}}/jquery/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.21.0/css/components/notify.min.css">
+
+
+
+  

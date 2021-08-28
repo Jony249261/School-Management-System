@@ -47,6 +47,7 @@
                     <th>Role</th>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>Code</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -57,6 +58,7 @@
                     <th>{{$row->usertype}}</th>
                     <th>{{$row->name}}</th>
                     <th>{{$row->email}}</th>
+                    <th>{{$row->code}}</th>
                     <th>
                         <a href="{{route('users.edit',$row->id)}}" class="btn btn-info btn-sm"> <i class="fa fa-edit"></i></a>
                         <a href="{{route('users.delete',$row->id)}}" id="delete" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i></a>
@@ -71,6 +73,7 @@
                     <th>Role</th>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>Code</th>
                     <th>Action</th>
                   </tr>
                   </tfoot>

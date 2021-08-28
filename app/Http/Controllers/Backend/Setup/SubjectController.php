@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Subjecct;
+use App\Model\AssignSubject;
 use DB;
 
 
@@ -49,6 +50,7 @@ class SubjectController extends Controller
 
     public function delete($id){
         $subject = Subjecct::find($id)->delete();
+        $assign_subject = AssignSubject::where('subject_id',$id)->delete();
         Session::flash('success','Subject Deleted Successfully');
         return redirect()->route('setups.subject.view');
     }

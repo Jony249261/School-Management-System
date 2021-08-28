@@ -44,11 +44,11 @@
                     @csrf 
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="usertype">User Role</label>
-                            <select name="usertype"  id="usertype" class="form-control">
+                            <label for="role">User Role</label>
+                            <select name="role"  id="role" class="form-control">
                                 <option value="">Select Role</option>
                                 <option value="Admin">Admin</option>
-                                <option value="User">User</option>
+                                <option value="Operator">Operator</option>
                             </select>
                         </div>
                         <div class="form-group col-md-4">
@@ -64,14 +64,6 @@
                             @error('email')
                             <span class="text-danger">{{$message}}</span>
                   @enderror
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="password">Password</label>
-                            <input type="password" name="password" id="password" class="form-control" placeholder="Password">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="password2">Confirm Password</label>
-                            <input type="password" name="password2" id="password2" class="form-control" placeholder="Password">
                         </div>
                         <div class="form-group col-md-6">
                             <input type="submit"  class="btn btn-primary" >
