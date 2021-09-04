@@ -169,6 +169,42 @@
                 </a>
               </li>
               
+               <li class="nav-item">
+                <a href="{{route('students.reg.fee.view')}}" class="nav-link {{($route=='students.reg.fee.view')?'active':''}}">
+                  <i class="far fa-user-circle nav-icon"></i>
+                  <p>Registration Fee</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('students.monthly.fee.view')}}" class="nav-link {{($route=='students.monthly.fee.view')?'active':''}}">
+                  <i class="far fa-user-circle nav-icon"></i>
+                  <p>Monthly Fee</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('students.exam.fee.view')}}" class="nav-link {{($route=='students.exam.fee.view')?'active':''}}">
+                  <i class="far fa-user-circle nav-icon"></i>
+                  <p>Exam Fee</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item {{($prefix=='/employee')?'menu-open':''}}">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Manage Employee
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('employee.registration.view')}}" class="nav-link {{($route=='employee.registration.view')?'active':''}}">
+                  <i class="far fa-user-circle nav-icon"></i>
+                  <p>Students Registration</p>
+                </a>
+              </li>
+              
             </ul>
           </li>
         </ul>

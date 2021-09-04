@@ -196,3 +196,4 @@ $(function () {
   });
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.21.0/js/components/notify.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.js" ></script>

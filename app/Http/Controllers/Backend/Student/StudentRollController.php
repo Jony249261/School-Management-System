@@ -28,11 +28,25 @@ class StudentRollController extends Controller
 
 
     public function getStudent(Request $request){
-        $allData = AssignStudent::with(['student'])->where('class_id',$request->class_is)->where('year_id',$request->year_id)->get();
+        $allData = AssignStudent::with(['student'])->where('class_id',$request->class_id)->where('year_id',$request->year_id)->get();
         return response()->json($allData);
     }
 
     public function store(Request $request){
+        
+        $year_id = $request->year_id;
+        $class_id = $request->class_id;
 
+        if($request->student_id != null){
+            for($i=0; $i<count($request->student_id); $i++){
+                AssignStudent::where('year_id',$year_id)->where('class_id',$class_id)->where('student_id',$request->student_id[$i])->update(['roll'=>$request->roll[$i]]);
+
+            }
+        }else{
+            Session::flash('error','Sorry! There Are No Student!');
+            return redirect()->back();
+        }
+        Session::flash('success','Student Roll Generate Successfully');
+        return redirect()->route('students.roll.view');
     }
 }

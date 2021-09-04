@@ -158,6 +158,39 @@ Route::prefix('students')->group(function(){
     Route::get('/roll/get-student', 'Backend\Student\StudentRollController@getStudent')->name('students.roll.get-student');
     Route::post('/roll/store', 'Backend\Student\StudentRollController@store')->name('students.roll.store');
 
+    //Student Registration Fee
+    Route::get('/reg/fee/view', 'Backend\Student\RegistrationfeeController@view')->name('students.reg.fee.view');
+    Route::get('/reg/get-student/view', 'Backend\Student\RegistrationfeeController@getStudent')->name('students.reg.fee.get-student');
+    Route::get('/reg/fee/payslip', 'Backend\Student\RegistrationfeeController@paySlip')->name('student.registration.fee.payslip');
+
+    //Student Monthly Fee
+    Route::get('/month/fee/view', 'Backend\Student\MonthlyfeeController@view')->name('students.monthly.fee.view');
+    Route::get('/month/get-student/view', 'Backend\Student\MonthlyfeeController@getStudent')->name('students.monthly.fee.get-student');
+    Route::get('/month/fee/payslip', 'Backend\Student\MonthlyfeeController@paySlip')->name('student.monthly.fee.payslip');
+
+    //Student Monthly Fee
+    Route::get('/exam/fee/view', 'Backend\Student\ExamfeeController@view')->name('students.exam.fee.view');
+    Route::get('/exam/get-student/view', 'Backend\Student\ExamfeeController@getStudent')->name('students.exam.fee.get-student');
+    Route::get('/exam/fee/payslip', 'Backend\Student\ExamfeeController@paySlip')->name('student.exam.fee.payslip');
+
+});
+
+
+//Employee routes
+Route::prefix('employee')->group(function(){
+
+    //Employee Registration
+    Route::get('/reg/view', 'Backend\Student\StudentRegController@view')->name('students.registration.view');
+    Route::get('/reg/add', 'Backend\Student\StudentRegController@add')->name('students.registration.add');
+    Route::post('/reg/store', 'Backend\Student\StudentRegController@store')->name('students.registration.store');
+    Route::get('/reg/edit/{student_id}', 'Backend\Student\StudentRegController@edit')->name('students.registration.edit');
+    Route::get('/reg/promotion/{student_id}', 'Backend\Student\StudentRegController@promotion')->name('students.registration.promotion');
+    Route::post('/reg/promotion/store/{student_id}', 'Backend\Student\StudentRegController@promotionStore')->name('students.registration.promotion.store');
+    Route::get('/reg/details/{student_id}', 'Backend\Student\StudentRegController@studentDetails')->name('students.registration.details');
+    Route::post('/reg/update/{student_id}', 'Backend\Student\StudentRegController@update')->name('students.registration.update');
+    Route::get('/reg/delete/{id}', 'Backend\Student\StudentRegController@delete')->name('students.registration.delete');
+    Route::get('/year-class-wise', 'Backend\Student\StudentRegController@searchStudent')->name('students.registration.seach');
+
 
 });
 
