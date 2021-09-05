@@ -201,7 +201,7 @@
               <li class="nav-item">
                 <a href="{{route('employee.registration.view')}}" class="nav-link {{($route=='employee.registration.view')?'active':''}}">
                   <i class="far fa-user-circle nav-icon"></i>
-                  <p>Students Registration</p>
+                  <p>Employee Registration</p>
                 </a>
               </li>
               

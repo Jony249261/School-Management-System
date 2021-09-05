@@ -180,16 +180,17 @@ Route::prefix('students')->group(function(){
 Route::prefix('employee')->group(function(){
 
     //Employee Registration
-    Route::get('/reg/view', 'Backend\Student\StudentRegController@view')->name('students.registration.view');
-    Route::get('/reg/add', 'Backend\Student\StudentRegController@add')->name('students.registration.add');
-    Route::post('/reg/store', 'Backend\Student\StudentRegController@store')->name('students.registration.store');
-    Route::get('/reg/edit/{student_id}', 'Backend\Student\StudentRegController@edit')->name('students.registration.edit');
-    Route::get('/reg/promotion/{student_id}', 'Backend\Student\StudentRegController@promotion')->name('students.registration.promotion');
-    Route::post('/reg/promotion/store/{student_id}', 'Backend\Student\StudentRegController@promotionStore')->name('students.registration.promotion.store');
-    Route::get('/reg/details/{student_id}', 'Backend\Student\StudentRegController@studentDetails')->name('students.registration.details');
-    Route::post('/reg/update/{student_id}', 'Backend\Student\StudentRegController@update')->name('students.registration.update');
-    Route::get('/reg/delete/{id}', 'Backend\Student\StudentRegController@delete')->name('students.registration.delete');
-    Route::get('/year-class-wise', 'Backend\Student\StudentRegController@searchStudent')->name('students.registration.seach');
+    Route::get('/reg/view', 'Backend\Employee\EmployeeRegController@view')->name('employee.registration.view');
+    Route::get('/reg/add', 'Backend\Employee\EmployeeRegController@add')->name('employee.registration.add');
+    Route::post('/reg/store', 'Backend\Employee\EmployeeRegController@store')->name('employee.registration.store');
+    Route::get('/reg/edit/{student_id}', 'Backend\Employee\EmployeeRegController@edit')->name('employee.registration.edit');
+    Route::get('/reg/promotion/{student_id}', 'Backend\Employee\EmployeeRegController@promotion')->name('employee.registration.promotion');
+    Route::post('/reg/promotion/store/{student_id}', 'Backend\Employee\EmployeeRegController@promotionStore')->name('employee.registration.promotion.store');
+    Route::get('/reg/details/{student_id}', 'Backend\Employee\EmployeeRegController@studentDetails')->name('employee.registration.details');
+    Route::post('/reg/update/{student_id}', 'Backend\Employee\EmployeeRegController@update')->name('employee.registration.update');
+    Route::get('/reg/delete/{id}', 'Backend\Employee\EmployeeRegController@delete')->name('employee.registration.delete');
+    Route::get('/year-class-wise', 'Backend\Employee\EmployeeRegController@searchStudent')->name('employee.registration.seach');
+    
 
 
 });
