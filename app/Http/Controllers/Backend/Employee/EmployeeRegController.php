@@ -31,16 +31,6 @@ class EmployeeRegController extends Controller
     }
 
 
-    public function searchStudent(Request $request){
-        $class = StudentClass::all();
-        $year = StudentYear::orderBy('id','DESC')->get();
-        $year_id = $request->year_id;
-        $class_id = $request->class_id;
-        $data = AssignStudent::where('year_id',$year_id)->where('class_id',$class_id)->get();
-        return view('backend.student.student_reg.view-student', compact('data','year','class','year_id','class_id'));
-    }
-
-
     public function add(){
         $designation = Designation::all();
         return view('backend.employee.employee_reg.add-employee', compact('designation'));

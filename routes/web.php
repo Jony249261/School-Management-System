@@ -190,11 +190,9 @@ Route::prefix('employee')->group(function(){
     
     //Salary
     Route::get('/salary/view', 'Backend\Employee\EmployeeSalaryController@view')->name('employee.salary.view');
-    Route::get('/salary/add', 'Backend\Employee\EmployeeSalaryController@add')->name('employee.salary.add');
-    Route::post('/salary/store', 'Backend\Employee\EmployeeSalaryController@store')->name('employee.salary.store');
-    Route::get('/salary/edit/{id}', 'Backend\Employee\EmployeeSalaryController@edit')->name('employee.salary.edit');
+    Route::get('/salary/increment/{id}', 'Backend\Employee\EmployeeSalaryController@increment')->name('employee.salary.increment');
     Route::get('/salary/details/{id}', 'Backend\Employee\EmployeeSalaryController@employeetDetails')->name('employee.salary.details');
-    Route::post('/salary/update/{id}', 'Backend\Employee\EmployeeSalaryController@update')->name('employee.salary.update');
+    Route::post('/salary/increment/store/{id}', 'Backend\Employee\EmployeeSalaryController@store')->name('employee.salary.store');
     //Route::get('/salary/delete/{id}', 'Backend\Employee\EmployeeSalaryController@delete')->name('employee.salary.delete');
 
 });
