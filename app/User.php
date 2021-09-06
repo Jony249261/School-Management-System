@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Model\Designation;
 
 class User extends Authenticatable
 {
@@ -28,6 +29,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function designation(){
+        return $this->belongsTo(Designation::class,'designation_id', 'id');
+    }
+
     /**
      * The attributes that should be cast to native types.
      *
@@ -36,4 +41,5 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
 }

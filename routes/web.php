@@ -150,7 +150,7 @@ Route::prefix('students')->group(function(){
     Route::post('/reg/promotion/store/{student_id}', 'Backend\Student\StudentRegController@promotionStore')->name('students.registration.promotion.store');
     Route::get('/reg/details/{student_id}', 'Backend\Student\StudentRegController@studentDetails')->name('students.registration.details');
     Route::post('/reg/update/{student_id}', 'Backend\Student\StudentRegController@update')->name('students.registration.update');
-    Route::get('/reg/delete/{id}', 'Backend\Student\StudentRegController@delete')->name('students.registration.delete');
+    //Route::get('/reg/delete/{id}', 'Backend\Student\StudentRegController@delete')->name('students.registration.delete');
     Route::get('/year-class-wise', 'Backend\Student\StudentRegController@searchStudent')->name('students.registration.seach');
 
     //Student Roll Generate
@@ -183,15 +183,19 @@ Route::prefix('employee')->group(function(){
     Route::get('/reg/view', 'Backend\Employee\EmployeeRegController@view')->name('employee.registration.view');
     Route::get('/reg/add', 'Backend\Employee\EmployeeRegController@add')->name('employee.registration.add');
     Route::post('/reg/store', 'Backend\Employee\EmployeeRegController@store')->name('employee.registration.store');
-    Route::get('/reg/edit/{student_id}', 'Backend\Employee\EmployeeRegController@edit')->name('employee.registration.edit');
-    Route::get('/reg/promotion/{student_id}', 'Backend\Employee\EmployeeRegController@promotion')->name('employee.registration.promotion');
-    Route::post('/reg/promotion/store/{student_id}', 'Backend\Employee\EmployeeRegController@promotionStore')->name('employee.registration.promotion.store');
-    Route::get('/reg/details/{student_id}', 'Backend\Employee\EmployeeRegController@studentDetails')->name('employee.registration.details');
-    Route::post('/reg/update/{student_id}', 'Backend\Employee\EmployeeRegController@update')->name('employee.registration.update');
-    Route::get('/reg/delete/{id}', 'Backend\Employee\EmployeeRegController@delete')->name('employee.registration.delete');
-    Route::get('/year-class-wise', 'Backend\Employee\EmployeeRegController@searchStudent')->name('employee.registration.seach');
+    Route::get('/reg/edit/{id}', 'Backend\Employee\EmployeeRegController@edit')->name('employee.registration.edit');
+    Route::get('/reg/details/{id}', 'Backend\Employee\EmployeeRegController@employeetDetails')->name('employee.registration.details');
+    Route::post('/reg/update/{id}', 'Backend\Employee\EmployeeRegController@update')->name('employee.registration.update');
+    //Route::get('/reg/delete/{id}', 'Backend\Employee\EmployeeRegController@delete')->name('employee.registration.delete');
     
-
+    //Salary
+    Route::get('/salary/view', 'Backend\Employee\EmployeeSalaryController@view')->name('employee.salary.view');
+    Route::get('/salary/add', 'Backend\Employee\EmployeeSalaryController@add')->name('employee.salary.add');
+    Route::post('/salary/store', 'Backend\Employee\EmployeeSalaryController@store')->name('employee.salary.store');
+    Route::get('/salary/edit/{id}', 'Backend\Employee\EmployeeSalaryController@edit')->name('employee.salary.edit');
+    Route::get('/salary/details/{id}', 'Backend\Employee\EmployeeSalaryController@employeetDetails')->name('employee.salary.details');
+    Route::post('/salary/update/{id}', 'Backend\Employee\EmployeeSalaryController@update')->name('employee.salary.update');
+    //Route::get('/salary/delete/{id}', 'Backend\Employee\EmployeeSalaryController@delete')->name('employee.salary.delete');
 
 });
 

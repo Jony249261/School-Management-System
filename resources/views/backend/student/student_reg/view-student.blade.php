@@ -109,7 +109,7 @@
                     
                     <th>
                         <a href="{{route('students.registration.edit',$row->student_id)}}" class="btn btn-info btn-sm"> <i class="fa fa-edit"></i></a>
-                        <a href="{{route('students.registration.delete',$row->student_id)}}" id="delete" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i></a>
+                        <a href="" id="delete" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i></a>
                         
                         <a href="{{route('students.registration.promotion',$row->student_id)}}" class="btn btn-success btn-sm"> <i class="fas fa-check-double"></i></a>
                         <a target="_blank" href="{{route('students.registration.details',$row->student_id)}}" class="btn btn-primary btn-sm"> <i class="far fa-address-card"></i></a>
@@ -170,7 +170,7 @@
                     @endif>
                     <th>
                         <a href="{{route('students.registration.edit',$row->student_id)}}" class="btn btn-info btn-sm"> <i class="fa fa-edit"></i></a>
-                        <a href="{{route('students.registration.delete',$row->student_id)}}" id="delete" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i></a>
+                        <a href="" id="delete" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i></a>
                         <a href="{{route('students.registration.promotion',$row->student_id)}}" class="btn btn-success btn-sm"> <i class="fas fa-check-double"></i></a>
                         <a target="_blank" href="{{route('students.registration.promotion',$row->student_id)}}" class="btn btn-primary btn-sm"> <i class="far fa-address-card"></i></a>
                     </th>
