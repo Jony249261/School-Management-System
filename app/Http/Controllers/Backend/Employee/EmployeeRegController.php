@@ -22,10 +22,7 @@ class EmployeeRegController extends Controller
 {
     public function view(){
         
-        $class = StudentClass::all();
-        $year = StudentYear::orderBy('id','DESC')->get();
-        $year_id = StudentYear::orderBy('id','DESC')->first()->id;
-        $class_id = StudentClass::orderBy('id','ASC')->first()->id;
+        
         $data = User::where('usertype','Employee')->get();
         return view('backend.employee.employee_reg.view-employee', compact('data'));
     }

@@ -210,6 +210,12 @@
                   <p>Employee Salary</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('employee.leave.view')}}" class="nav-link {{($route=='employee.leave.view')?'active':''}}">
+                  <i class="far fa-user-circle nav-icon"></i>
+                  <p>Employee Leave</p>
+                </a>
+              </li>
               
             </ul>
           </li>

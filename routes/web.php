@@ -195,6 +195,13 @@ Route::prefix('employee')->group(function(){
     Route::post('/salary/increment/store/{id}', 'Backend\Employee\EmployeeSalaryController@store')->name('employee.salary.store');
     //Route::get('/salary/delete/{id}', 'Backend\Employee\EmployeeSalaryController@delete')->name('employee.salary.delete');
 
+    //Employee Leave
+    Route::get('/leave/view', 'Backend\Employee\EmployeeLeaveController@view')->name('employee.leave.view');
+    Route::get('/leave/add', 'Backend\Employee\EmployeeLeaveController@add')->name('employee.leave.add');
+    Route::post('/leave/store', 'Backend\Employee\EmployeeLeaveController@store')->name('employee.leave.store');
+    Route::get('/leave/edit/{id}', 'Backend\Employee\EmployeeLeaveController@edit')->name('employee.leave.edit');
+    Route::post('/leave/update/{id}', 'Backend\Employee\EmployeeLeaveController@update')->name('employee.leave.update');
+
 });
 
 
