@@ -209,6 +209,11 @@ Route::prefix('employee')->group(function(){
     Route::get('/attendence/edit/{date}', 'Backend\Employee\EmployeeAttendenceController@edit')->name('employee.attendence.edit');
     Route::get('/attendence/details/{date}', 'Backend\Employee\EmployeeAttendenceController@details')->name('employee.attendence.details');
 
+    //Employee Monthly Salary
+    Route::get('/monthly/salary/view', 'Backend\Employee\MonthlySalaryController@view')->name('employee.monthly.salary.view');
+    Route::get('/monthly/salary/get', 'Backend\Employee\MonthlySalaryController@getSalary')->name('employee.monthly.salary.get');
+    Route::get('/monthly/salary/payslip/{employee_id}', 'Backend\Employee\MonthlySalaryController@payslip')->name('employee.monthly.salary.payslip');
+
 });
 
 

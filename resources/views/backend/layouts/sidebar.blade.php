@@ -224,7 +224,7 @@
               </li>
 
                <li class="nav-item">
-                <a href="{{route('employee.attendence.view')}}" class="nav-link {{($route=='employee.attendence.view')?'active':''}}">
+                <a href="{{route('employee.monthly.salary.view')}}" class="nav-link {{($route=='employee.monthly.salary.view')?'active':''}}">
                   <i class="far fa-user-circle nav-icon"></i>
                   <p>Employee Monthly Salary</p>
                 </a>

@@ -8,12 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Manage Registration Fee</h1>
+            <h1 class="m-0">Manage Employee Monthly Salary</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Fee</li>
+              <li class="breadcrumb-item active">Monthly Salary</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -34,44 +34,25 @@
             <div class="card">
               <div class="card-header bg-primary">
                 <h3>
-                  <i class="fas fa-users mr-1"></i>
-                  Search Criteria
+                  <i class="far fa-calendar-alt mr-1"></i>
+                  Select Date
                   
                 </h3>
               </div><!-- /.card-header -->
-
               <div class="card-body">
-                  
-                        <div class="form-row">
-                        
-                            <div class="form-group col-md-4">
-                                <label for="year_id">Year <font style="color:red">*</font> </label>
-                                <select name="year_id"  id="year_id" class="form-control form-control-sm">
-                                    <option value="">Select Year</option>
-                                    @foreach($year as $years)
-                                    <option value="{{$years->id}}">{{$years->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="class_id">Class <font style="color:red">*</font> </label>
-                                <select name="class_id"  id="class_id" class="form-control form-control-sm">
-                                    <option value="">Select Class</option>
-                                    @foreach($class as $classes)
-                                    <option value="{{$classes->id}}">{{$classes->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group col-md-4" style="padding-top:32px">
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                            <label for="date">Date <font style="color:red">*</font> </label>
+                            <input type="text" id="date" name="date" class="form-control form-control-sm singledatepicker" placeholder="Enter Your Join Date" autocomplete="off" autofill="off">
+                            @error('date')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group col-md-4" style="padding-top:32px">
                                 <a  id="search" class="btn btn-primary btn-sm" name="search">Search</a>
                             </div>
-                            <br>
-                            
-                            
-                        </div>
-
+                </div>
               </div><!-- /.card-body -->
-
               <div class="card-body">
                   <div id="DocumentResults"></div>
                   <script id="document-template" type="text/x-handlebars-template">
@@ -92,7 +73,6 @@
                   </script>
 
               </div>
-
             </div>
           </section>
           <!-- /.Left col -->
@@ -104,29 +84,21 @@
   </div>
   <!-- /.content-wrapper -->
 
-
   <script type="text/javascript">
      $(document).on('click','#search',function(){
-         var year_id = $('#year_id').val();
-         var class_id = $('#class_id').val();
+         var date = $('#date').val();
          $('.notifyjs-corner').html('');
-         if(year_id == ''){
+         if(date == ''){
            //alert("Select Year");
-           $.notify("Please Select Year!", {color: "#fff", background: "#D44950"});
             // $(.notify("Year Required", {globslPosition: 'top right',className: 'error'}));
-             
-             return false;
-         }
-         if(class_id == ''){
-             //$(.notify("Class Required", {globslPosition: 'top right',className: 'error'}));
-             //alert("Select Class");
-             $.notify("Please Select Class!", {color: "#fff", background: "#D44950"});
+             $.notify("Please Select Date!", {color: "#fff", background: "#D44950"});
+
              return false;
          }
          $.ajax({
-             url: "{{route('students.reg.fee.get-student')}}",
+             url: "{{route('employee.monthly.salary.get')}}",
              type: "GET",
-             data: {'year_id': year_id,'class_id':class_id},
+             data: {'date': date},
              beforeSend: function(){
 
 
@@ -143,8 +115,18 @@
      });
   </script>
 
-  <!-- Validation -->
-  <!-- Validation -->
-
+  <!-- Datepicker -->
+<script>
+$(function() {
+  $('input[name="date"]').daterangepicker({
+    singleDatePicker: true,
+    showDropdowns: true,
+    minYear: 1901,
+    maxYear: parseInt(moment().format('YYYY'),10)
+  }, function(start, end, label) {
+    var years = moment().diff(start, 'years');
+  });
+});
+</script>
 
 @endsection

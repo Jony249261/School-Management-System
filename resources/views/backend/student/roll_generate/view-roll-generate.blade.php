@@ -142,14 +142,14 @@ $(document).ready(function () {
          var class_id = $('#class_id').val();
          $('.notifyjs-corner').html('');
          if(year_id == ''){
-           alert("Select Year");
+           $.notify("Please Select Year!", {color: "#fff", background: "#D44950"});
             // $(.notify("Year Required", {globslPosition: 'top right',className: 'error'}));
              
              return false;
          }
          if(class_id == ''){
              //$(.notify("Class Required", {globslPosition: 'top right',className: 'error'}));
-             alert("Select Class");
+            $.notify("Please Select Class!", {color: "#fff", background: "#D44950"});
              return false;
          }
          $.ajax({

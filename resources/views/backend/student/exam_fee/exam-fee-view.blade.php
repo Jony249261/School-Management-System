@@ -121,14 +121,22 @@
          var exam_type = $('#exam_type').val();
          $('.notifyjs-corner').html('');
          if(year_id == ''){
-           alert("Select Year");
+           //alert("Select Year");
             // $(.notify("Year Required", {globslPosition: 'top right',className: 'error'}));
-             
+             $.notify("Please Select Year!", {color: "#fff", background: "#D44950"});
+
              return false;
          }
          if(class_id == ''){
              //$(.notify("Class Required", {globslPosition: 'top right',className: 'error'}));
-             alert("Select Class");
+             //alert("Select Class");
+             $.notify("Please Select Class!", {color: "#fff", background: "#D44950"});
+             return false;
+         }
+         if(exam_type == ''){
+             //$(.notify("Class Required", {globslPosition: 'top right',className: 'error'}));
+             //alert("Select Class");
+             $.notify("Please Select Exam Type!", {color: "#fff", background: "#D44950"});
              return false;
          }
          $.ajax({
