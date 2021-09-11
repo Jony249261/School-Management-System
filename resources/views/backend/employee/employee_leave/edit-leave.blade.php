@@ -100,14 +100,20 @@
 $(function () {
   $('#myForm').validate({
     rules: {
-      name: {
+      employee_id: {
         required: true,
       },
+      leave_purpose_id:{
+        required: true,
+      }
     },
     messages: {
       
-      name: {
-        required: "Please Provide Group Name",
+      employee_id: {
+        required: "Please Select Employee Name",
+      },
+      leave_purpose_id: {
+        required: "Please Select Leave Purpose",
       },
     },
     errorElement: 'span',

@@ -216,6 +216,19 @@
                   <p>Employee Leave</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('employee.attendence.view')}}" class="nav-link {{($route=='employee.attendence.view')?'active':''}}">
+                  <i class="far fa-user-circle nav-icon"></i>
+                  <p>Employee Attendence</p>
+                </a>
+              </li>
+
+               <li class="nav-item">
+                <a href="{{route('employee.attendence.view')}}" class="nav-link {{($route=='employee.attendence.view')?'active':''}}">
+                  <i class="far fa-user-circle nav-icon"></i>
+                  <p>Employee Monthly Salary</p>
+                </a>
+              </li>
               
             </ul>
           </li>
