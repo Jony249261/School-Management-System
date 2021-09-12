@@ -169,7 +169,7 @@
                             <td width="63%" class="text-center">
                                 <h4><strong>ABS School</strong></h4>
                                 <h5><strong>Dhaka mirpur 12</strong></h5>
-                                <h6><strong>www.micreowebit.con</strong></h6>
+                                <h6><strong>www.micreowebit.com</strong></h6>
                             </td>
                             <td class="text-center">
                                 <img src="{{(!empty($totalattendgroupbyib['0']['employee']['image']))?url('public/upload/employee_images/'.$totalattendgroupbyib['0']['employee']['image']):url('public/upload/noimage.jpg')}}" alt="" style="width:60px; height:60px">

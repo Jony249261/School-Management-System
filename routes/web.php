@@ -138,7 +138,7 @@ Route::prefix('setups')->group(function(){
 });
 
 
-//Users routes
+//Students routes
 Route::prefix('students')->group(function(){
 
     //Student Registration
@@ -215,6 +215,19 @@ Route::prefix('employee')->group(function(){
     Route::get('/monthly/salary/payslip/{employee_id}', 'Backend\Employee\MonthlySalaryController@payslip')->name('employee.monthly.salary.payslip');
 
 });
+
+//Marks Routes
+Route::prefix('marks')->group(function(){
+    Route::get('/add', 'Backend\Mark\MarksController@add')->name('marks.add');
+    Route::post('/store', 'Backend\Mark\MarksController@store')->name('marks.store');
+    Route::post('/update', 'Backend\Mark\MarksController@update')->name('marks.update');
+    Route::get('/edit', 'Backend\Mark\MarksController@edit')->name('marks.edit');
+    Route::get('/get-student-marks', 'Backend\Mark\MarksController@getMarks')->name('get.student.marks');
+});
+
+
+Route::get('/get-student', 'Backend\DefaultController@getStudent')->name('get.student');
+Route::get('/get-subject', 'Backend\DefaultController@getSubject')->name('marks.getSubject');
 
 
 

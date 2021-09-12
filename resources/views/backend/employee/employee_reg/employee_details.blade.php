@@ -70,7 +70,7 @@
                             <td width="63%" class="text-center">
                                 <h4><strong>ABS School</strong></h4>
                                 <h5><strong>Dhaka mirpur 12</strong></h5>
-                                <h6><strong>www.micreowebit.con</strong></h6>
+                                <h6><strong>www.micreowebit.com</strong></h6>
                             </td>
                             <td class="text-center">
                                 <img src="{{url('public/upload/employee_images/'.$data->image)}}" alt="" style="width:100px; height:100px">

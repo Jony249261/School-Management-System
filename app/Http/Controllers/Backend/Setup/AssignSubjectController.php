@@ -63,18 +63,23 @@ class AssignSubjectController extends Controller
                 Session::flash('error','Sorry! You Dont Select Any Subject!');
                 return redirect()->back();
             }else{
-                AssignSubject::where('class_id',$id)->delete();
-                $countSubject = count($request->subject_id);
-            
-                for($i=0; $i<$countSubject; $i++){
-                    $assign_subject = new AssignSubject();
-                    $assign_subject->subject_id = $request->subject_id[$i];
-                    $assign_subject->class_id = $request->class_id;
-                    $assign_subject->full_mark = $request->full_mark[$i];
-                    $assign_subject->pass_mark = $request->pass_mark[$i];
-                    $assign_subject->get_mark = $request->get_mark[$i];
-                    $assign_subject->save();
-                }
+                    AssignSubject::whereNotIn('subject_id',$request->subject_id)->where('class_id',$request->class_id)->delete();
+                    foreach($request->subject_id as $key => $value){
+                        $asign_subject_exist = AssignSubject::where('subject_id',$request->subject_id[$key])->where('class_id',$request->class_id)->first();
+                        if($asign_subject_exist){
+                            $assignSubject = $asign_subject_exist;
+                        }else{
+                            $assignSubject = New AssignSubject();
+                        }
+                        $assignSubject->subject_id = $request->subject_id[$key];
+                        $assignSubject->class_id = $request->class_id;
+                        $assignSubject->full_mark = $request->full_mark[$key];
+                        $assignSubject->pass_mark = $request->pass_mark[$key];
+                        $assignSubject->get_mark = $request->get_mark[$key];
+                        $assignSubject->save();
+                
+                    
+                    }
                 
             }
         

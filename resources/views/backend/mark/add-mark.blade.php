@@ -8,12 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Manage Roll Generate</h1>
+            <h1 class="m-0">Manage Student Marks</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Roll Generate</li>
+              <li class="breadcrumb-item active">Mark</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -41,11 +41,11 @@
               </div><!-- /.card-header -->
 
               <div class="card-body">
-                  <form id="myForm" method="POST" action="{{route('students.roll.store')}}">
+                  <form id="myForm" method="POST" action="{{route('marks.store')}}">
                       @csrf
                         <div class="form-row">
                         
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
                                 <label for="year_id">Year <font style="color:red">*</font> </label>
                                 <select name="year_id"  id="year_id" class="form-control form-control-sm">
                                     <option value="">Select Year</option>
@@ -54,12 +54,28 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
                                 <label for="class_id">Class <font style="color:red">*</font> </label>
                                 <select name="class_id"  id="class_id" class="form-control form-control-sm">
                                     <option value="">Select Class</option>
                                     @foreach($class as $classes)
                                     <option value="{{$classes->id}}">{{$classes->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="class_id">Subject <font style="color:red">*</font> </label>
+                                <select name="assign_subject_id"  id="assign_subject_id" class="form-control form-control-sm">
+                                    <option value="">Select Subject</option>
+                                    
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="class_id">Exam Type <font style="color:red">*</font> </label>
+                                <select name="exam_id"  id="exam_id" class="form-control form-control-sm">
+                                    <option value="">Select Exam Type</option>
+                                    @foreach($exams as $exam)
+                                    <option value="{{$exam->id}}">{{$exam->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -70,23 +86,24 @@
                             
                             
                         </div>
-                        <div class="row d-none" id="roll-generate">
+                        <div class="row d-none" id="marks-entry">
                                 <div class="col-md-12">
                                     <table class="table table-bordered table-striped dt-responsive" style="width:100%">
                                         <thead>
                                             <tr>
                                                 <th>ID No</th>
+                                                <th>Roll</th>
                                                 <th>Student Name</th>
                                                 <th>Father's Name</th>
                                                 <th>Gender</th>
-                                                <th>Roll No</th>
+                                                <th>Marks</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="roll-generate-tr">
+                                        <tbody id="marks-entry-tr">
 
                                         </tbody>
                                     </table>
-                                    <button type="submit" class="btn btn-success btn-sm">Roll Generate</button>
+                                    <button type="submit" class="btn btn-success btn-sm">Marks Entry</button>
                                 </div>
                                 
                             </div>
@@ -110,16 +127,16 @@
 $(document).ready(function () {
   $('#myForm').validate({
     rules: {
-      "roll[]": {
+      "marks[]": {
         required: true,
         number:true
       }
       
     },
     messages: {
-      roll: {
-        required: "Please Provide Student Roll",
-        number:"Please Provide Student Roll",
+      marks: {
+        required: "Please Provide Subject Marks",
+        number:"Please Provide Subject Marks",
       },
     },
     errorElement: 'span',
@@ -137,10 +154,13 @@ $(document).ready(function () {
 });
 </script>
 
+
   <script type="text/javascript">
      $(document).on('click','#search',function(){
          var year_id = $('#year_id').val();
          var class_id = $('#class_id').val();
+         var exam_id = $('#exam_id').val();
+         var assign_subject_id = $('#assign_subject_id').val();
          $('.notifyjs-corner').html('');
          if(year_id == ''){
            $.notify("Please Select Year!", {color: "#fff", background: "#D44950"});
@@ -153,27 +173,62 @@ $(document).ready(function () {
             $.notify("Please Select Class!", {color: "#fff", background: "#D44950"});
              return false;
          }
+         if(exam_id == ''){
+             //$(.notify("Class Required", {globslPosition: 'top right',className: 'error'}));
+            $.notify("Please Select Exam Type!", {color: "#fff", background: "#D44950"});
+             return false;
+         }
+         if(assign_subject_id == ''){
+             //$(.notify("Class Required", {globslPosition: 'top right',className: 'error'}));
+            $.notify("Please Select Subject!", {color: "#fff", background: "#D44950"});
+             return false;
+         }
          $.ajax({
-             url: "{{route('students.roll.get-student')}}",
+             url: "{{route('get.student')}}",
              type: "GET",
-             data: {'year_id': year_id,'class_id':class_id},
+             data: {'year_id': year_id,'class_id':class_id,},
              success: function (data) {
-                 $('#roll-generate').removeClass('d-none');
+                 $('#marks-entry').removeClass('d-none');
                  var html = '';
                  $.each(data, function(key, v){
                      html +=
                      '<tr>'+
-                     '<td>'+v.student.id_no+'<input type="hidden" name="student_id[]" value="'+v.student_id+'"></td>'+
+                     '<td>'+v.student.id_no+'<input type="hidden" name="student_id[]" value="'+v.student_id+'"><input type="hidden" name="id_no[]" value="'+v.student.id_no+'"></td>'+
+                     '<td>'+v.roll+'</td>'+
                      '<td>'+v.student.name+'</td>'+
                      '<td>'+v.student.fname+'</td>'+
                      '<td>'+v.student.gender+'</td>'+
-                     '<td><input type="text" class="form-controll form-controll-sm" name="roll[]" value="'+v.roll+'"></td>'+
+                     '<td><input type="text" class="form-controll form-controll-sm" name="marks[]"></td>'+
                      '</tr>'
                  });
-                 html = $('#roll-generate-tr').html(html);
+                 html = $('#marks-entry-tr').html(html);
              }
          });
      });
+  </script>
+
+  <script>
+      $(function(){
+          $(document).on('change','#class_id',function(){
+            var class_id = $('#class_id').val();
+            $.ajax({
+             url: "{{route('marks.getSubject')}}",
+             type: "GET",
+             data: {'class_id':class_id},
+             success: function (data) {
+                 
+                 var html = '<option value="">Select Subject</option>';
+
+                 $.each(data, function(key, v){
+                     html += '<option value="'+v.id+'">'+v.subject.name+'</option>';
+
+                 
+                    });
+                    $('#assign_subject_id').html(html);
+                     }
+                });
+          });
+      });
   </script>
 
   <!-- Validation -->

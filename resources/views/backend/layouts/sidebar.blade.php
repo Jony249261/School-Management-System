@@ -232,6 +232,30 @@
               
             </ul>
           </li>
+          <li class="nav-item {{($prefix=='/marks')?'menu-open':''}}">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Manage Mark
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('marks.add')}}" class="nav-link {{($route=='marks.add')?'active':''}}">
+                  <i class="far fa-user-circle nav-icon"></i>
+                  <p>Mark Entry</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('marks.edit')}}" class="nav-link {{($route=='marks.edit')?'active':''}}">
+                  <i class="far fa-user-circle nav-icon"></i>
+                  <p>Mark Edit</p>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
