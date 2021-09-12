@@ -223,6 +223,14 @@ Route::prefix('marks')->group(function(){
     Route::post('/update', 'Backend\Mark\MarksController@update')->name('marks.update');
     Route::get('/edit', 'Backend\Mark\MarksController@edit')->name('marks.edit');
     Route::get('/get-student-marks', 'Backend\Mark\MarksController@getMarks')->name('get.student.marks');
+
+    //Grade Point
+
+    Route::get('/grade/view', 'Backend\Mark\GradeController@view')->name('marks.grade.view');
+    Route::get('/grade/add', 'Backend\Mark\GradeController@add')->name('marks.grade.add');
+    Route::post('/grade/store', 'Backend\Mark\GradeController@store')->name('marks.grade.store');
+    Route::get('/grade/edit/{id}', 'Backend\Mark\GradeController@edit')->name('marks.grade.edit');
+    Route::post('/grade/update/{id}', 'Backend\Mark\GradeController@update')->name('marks.grade.update');
 });
 
 
