@@ -197,17 +197,4 @@ $(function() {
 });
 </script>
 
-
-<script>
-    $(document).ready(function(){
-        $(document).on('change','#leave_purpose_id',function(){
-            var leave_purpose_id = $(this).val();
-            if(leave_purpose_id == '0'){
-                $('#add_others').show();
-            }else{
-                $('#add_others').hide();
-            }
-        });
-    });
-</script>
 @endsection

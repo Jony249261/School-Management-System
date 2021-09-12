@@ -233,6 +233,15 @@ Route::prefix('marks')->group(function(){
     Route::post('/grade/update/{id}', 'Backend\Mark\GradeController@update')->name('marks.grade.update');
 });
 
+//Account Routes
+Route::prefix('accounts')->group(function(){
+    Route::get('/student/fee/view','Backend\Account\StudentFeeController@view')->name('accounts.fee.view');
+    Route::get('/student/fee/add','Backend\Account\StudentFeeController@add')->name('accounts.fee.add');
+    Route::post('/student/fee/store','Backend\Account\StudentFeeController@store')->name('accounts.fee.store');
+    Route::get('/student/getstudent','Backend\Account\StudentFeeController@getStudent')->name('accounts.fee.getstudent');
+
+});
+
 
 Route::get('/get-student', 'Backend\DefaultController@getStudent')->name('get.student');
 Route::get('/get-subject', 'Backend\DefaultController@getSubject')->name('marks.getSubject');
