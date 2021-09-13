@@ -252,7 +252,8 @@ Route::prefix('accounts')->group(function(){
     Route::get('/cost/add','Backend\Account\OtherCostController@add')->name('accounts.cost.add');
     Route::post('/cost/store','Backend\Account\OtherCostController@store')->name('accounts.cost.store');
     Route::get('/cost/edit/{id}','Backend\Account\OtherCostController@edit')->name('accounts.cost.edit');
-    Route::get('/cost/update/{id}','Backend\Account\OtherCostController@update')->name('accounts.cost.update');
+    Route::post('/cost/update/{id}','Backend\Account\OtherCostController@update')->name('accounts.cost.update');
+    Route::get('/cost/delete/{id}','Backend\Account\OtherCostController@delete')->name('accounts.cost.delete');
 
 });
 

@@ -284,7 +284,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('accounts.salary.view')}}" class="nav-link {{($route=='accounts.salary.view')?'active':''}}">
+                <a href="{{route('accounts.cost.view')}}" class="nav-link {{($route=='accounts.cost.view')?'active':''}}">
                   <i class="far fa-user-circle nav-icon"></i>
                   <p>Other Cost</p>
                 </a>
