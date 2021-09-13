@@ -268,6 +268,11 @@ Route::prefix('report')->group(function(){
     Route::get('/profit/get', 'Backend\Report\ProfitController@profit')->name('report.profit.datewise.get');
     Route::get('/profit/pdf', 'Backend\Report\ProfitController@pdf')->name('report.profit.pdf');
     
+
+    //Id-card Routes
+
+    Route::get('/id-card/view', 'Backend\Report\ProfitController@idCardView')->name('report.id-card.view');
+    Route::get('/id-card/get', 'Backend\Report\ProfitController@idCardGet')->name('report.id-card.get');
 });
 
 

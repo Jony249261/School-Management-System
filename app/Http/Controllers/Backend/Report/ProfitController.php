@@ -8,6 +8,10 @@ use App\Model\AccountEmployeeSalary;
 use App\Model\AccountOtherCost;
 use App\Model\AccountStudentFee;
 use PDF;
+use App\User;
+use App\Model\AssignStudent;
+use App\Model\StudentYear;
+use App\Model\StudentClass;
 
 class ProfitController extends Controller
 {
@@ -59,4 +63,17 @@ class ProfitController extends Controller
         $pdf->SetProtection(['copy', 'print'], '', 'pass');
         return $pdf->stream('document.pdf');
     }
+
+    public function idCardView(){
+        $years = StudentYear::orderBy('id','DESC')->get();
+        $classes = StudentClass::all();
+        return view('backend.report.id-card-view',compact('years','classes'));
+
+    }
+
+    public function idCardGet(Request $request){
+
+    }
+
+
 }
