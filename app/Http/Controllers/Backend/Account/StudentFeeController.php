@@ -52,28 +52,30 @@ class StudentFeeController extends Controller
         $html['thsource'] .= '<th>Select</th>';
 
         foreach($data as $key => $std){
-            $registrationfee =  FeeCategoryAmount::where('fee_category_id',$fee_category_id)->where('class_id',$std->class_id)->first();
-            $accountstudentfees = AccountStudentFee::where('student_id',$std->student_id)->where('year_id',$std->year_id)->where('class_id',$std->class_id)->where('fee_category_id',$std->fee_category_id)->where('date',$date)->first();
-            if($accountstudentfees !=null){
+            $studentfee =  FeeCategoryAmount::where('fee_category_id',$fee_category_id)->where('class_id',$std->class_id)->first();
+            $accountstudentfees = AccountStudentFee::where('student_id',$std->student_id)->where('year_id',$std->year_id)->where('class_id',$std->class_id)->where('fee_category_id',$fee_category_id)->where('date',$date)->first();
+            if($accountstudentfees != null){
                 $checked = 'checked';
+                
             }else{
                 $checked ='';
+                
             }
             $color = 'success';
             $html[$key]['tdsource'] = '<td>'.$std->student->id_no.'<input type="hidden" name="fee_category_id" value="'.$fee_category_id.'">'.'</td>';
             $html[$key]['tdsource'] .= '<td>'.$std->student->name.'<input type="hidden" name="year_id" value="'.$std->year_id.'">'.'</td>';
             $html[$key]['tdsource'] .= '<td>'.$std['student']['fname'].'<input type="hidden" name="class_id" value="'.$std->class_id.'">'.'</td>';
             
-            $html[$key]['tdsource'] .= '<td>'.$registrationfee->amount.'TK'.'<input type="hidden" name="date" value="'.$date.'">'.'</td>';
+            $html[$key]['tdsource'] .= '<td>'.$studentfee->amount.'TK'.'<input type="hidden" name="date" value="'.$date.'">'.'</td>';
             $html[$key]['tdsource'] .= '<td>'.$std['discount']['discount'].'%'.'</td>';
 
-            $originalfee = $registrationfee->amount;
+            $originalfee = $studentfee->amount;
             $discount = $std->discount->discount;
             $discountablefee = $discount/100*$originalfee;
             $finalfee = (int)$originalfee - $discountablefee;
 
             $html[$key]['tdsource'] .= '<td>'.'<input type="text" name="amount[]" value="'.$finalfee.'" class="form-controll" readonly>'.'</td>';
-            $html[$key]['tdsource'] .= '<td>'.'<input type="hidden" name="student_id[]" value="'.$std->student_id.'">'.'<input type="checkbox" name="checkmanage[]" value="'.$key.' '.$checked.' " style="transform:scale(1.5);margin-left:10px">'.'</td>';
+            $html[$key]['tdsource'] .= '<td>'.'<input type="hidden" name="student_id[]" value="'.$std->student_id.'">'.'<input type="checkbox" name="checkmanage[]" value="'.$key.'" '.$checked.'  style="transform:scale(1.5);margin-left:10px">'.'</td>';
         }
         return response()->json(@$html);
 

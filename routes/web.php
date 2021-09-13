@@ -235,10 +235,24 @@ Route::prefix('marks')->group(function(){
 
 //Account Routes
 Route::prefix('accounts')->group(function(){
+    //Student Fee
     Route::get('/student/fee/view','Backend\Account\StudentFeeController@view')->name('accounts.fee.view');
     Route::get('/student/fee/add','Backend\Account\StudentFeeController@add')->name('accounts.fee.add');
     Route::post('/student/fee/store','Backend\Account\StudentFeeController@store')->name('accounts.fee.store');
     Route::get('/student/getstudent','Backend\Account\StudentFeeController@getStudent')->name('accounts.fee.getstudent');
+
+    //Employee Salary
+    Route::get('/employee/salary/view','Backend\Account\SalaryController@view')->name('accounts.salary.view');
+    Route::get('/employee/salary/add','Backend\Account\SalaryController@add')->name('accounts.salary.add');
+    Route::post('/employee/salary/store','Backend\Account\SalaryController@store')->name('accounts.salary.store');
+    Route::get('/employee/get-employee','Backend\Account\SalaryController@getemployee')->name('accounts.salary.get-employee');
+
+    //Employee Salary
+    Route::get('/cost/view','Backend\Account\OtherCostController@view')->name('accounts.cost.view');
+    Route::get('/cost/add','Backend\Account\OtherCostController@add')->name('accounts.cost.add');
+    Route::post('/cost/store','Backend\Account\OtherCostController@store')->name('accounts.cost.store');
+    Route::get('/cost/edit/{id}','Backend\Account\OtherCostController@edit')->name('accounts.cost.edit');
+    Route::get('/cost/update/{id}','Backend\Account\OtherCostController@update')->name('accounts.cost.update');
 
 });
 

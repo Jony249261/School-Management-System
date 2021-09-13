@@ -277,6 +277,18 @@
                   <p>Student Fee</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('accounts.salary.view')}}" class="nav-link {{($route=='accounts.salary.view')?'active':''}}">
+                  <i class="far fa-user-circle nav-icon"></i>
+                  <p>Employee Salary</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('accounts.salary.view')}}" class="nav-link {{($route=='accounts.salary.view')?'active':''}}">
+                  <i class="far fa-user-circle nav-icon"></i>
+                  <p>Other Cost</p>
+                </a>
+              </li>
 
             </ul>
           </li>
