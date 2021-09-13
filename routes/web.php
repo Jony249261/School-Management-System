@@ -262,6 +262,14 @@ Route::get('/get-student', 'Backend\DefaultController@getStudent')->name('get.st
 Route::get('/get-subject', 'Backend\DefaultController@getSubject')->name('marks.getSubject');
 
 
+//Report Routes
+Route::prefix('report')->group(function(){
+    Route::get('/profit/view', 'Backend\Report\ProfitController@view')->name('report.profit.view');
+    Route::get('/profit/get', 'Backend\Report\ProfitController@profit')->name('report.profit.datewise.get');
+    Route::get('/profit/pdf', 'Backend\Report\ProfitController@pdf')->name('report.profit.pdf');
+    
+});
+
 
 
 });
