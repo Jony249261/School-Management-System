@@ -60,7 +60,10 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>44</h3>
+                @php 
+                $user = App\User::all()->count();
+                @endphp
+                <h3>{{$user}}</h3>
 
                 <p>User Registrations</p>
               </div>

@@ -10,7 +10,7 @@
           <img src="{{(!empty(Auth::user()->image))?url('public/upload/user_images/'.Auth::user()->image):url('public/upload/noimage.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"> {{ Auth::user()->name }}</a>
+          <a href="{{route('profiles.view')}}" class="d-block"> {{ Auth::user()->name }}</a>
         </div>
       </div>
 
@@ -305,6 +305,12 @@
                 <a href="{{route('report.profit.view')}}" class="nav-link {{($route=='report.profit.view')?'active':''}}">
                   <i class="far fa-user-circle nav-icon"></i>
                   <p>Monthly Profit</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('report.marksheet.view')}}" class="nav-link {{($route=='report.marksheet.view')?'active':''}}">
+                  <i class="far fa-user-circle nav-icon"></i>
+                  <p>Mark Sheet</p>
                 </a>
               </li>
               <li class="nav-item">

@@ -67,7 +67,7 @@ class MarksController extends Controller
         $exam_id = $request->exam_id;
         $assign_subject_id = $request->assign_subject_id;
 
-        $getStudent = StudentMark::with(['student'])->with(['rollSt'])->where('year_id',$year_id)->where('class_id',$class_id)->where('exam_type_id',$exam_id)->where('assign_subject_id',$assign_subject_id)->get();
+        $getStudent = StudentMark::with(['student'])->where('year_id',$year_id)->where('class_id',$class_id)->where('exam_type_id',$exam_id)->where('assign_subject_id',$assign_subject_id)->get();
         //dd($getStudent);
         return response()->json($getStudent);
     }

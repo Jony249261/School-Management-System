@@ -12,7 +12,10 @@ use App\User;
 use App\Model\AssignStudent;
 use App\Model\StudentYear;
 use App\Model\StudentClass;
-
+use App\Model\ExamType;
+use App\Model\StudentMark;
+use App\Model\MarkGrade;
+use Illuminate\Support\Facades\Session;
 class ProfitController extends Controller
 {
     public function view(){
@@ -62,6 +65,34 @@ class ProfitController extends Controller
         $pdf = PDF::loadView('backend.report.profit-pdf', compact('start_date','end_date','sdate','edate'));
         $pdf->SetProtection(['copy', 'print'], '', 'pass');
         return $pdf->stream('document.pdf');
+    }
+
+    public function marksheetView(){
+        $years = StudentYear::orderBy('id','DESC')->get();
+        $classes = StudentClass::all();
+        $exams = ExamType::all();
+        return view('backend.report.markshhet-view',compact('years','classes','exams'));
+
+    }
+
+    public function marksheetGet(Request $request){
+        $year_id = $request->year_id;
+        $class_id = $request->class_id;
+        $exam_id = $request->exam_id;
+        $id_no = $request->id_no;
+
+        $count_fail = StudentMark::where('year_id',$year_id)->where('class_id',$class_id)->where('exam_type_id',$exam_id)->where('id_no',$id_no)->where('marks','<','33')->get()->count();
+        
+        $singleStudent = StudentMark::where('year_id',$year_id)->where('class_id',$class_id)->where('exam_type_id',$exam_id)->where('id_no',$id_no)->first();
+        if($singleStudent == true){
+            $allMarks = StudentMark::with(['assign_subject','year'])->where('year_id',$year_id)->where('class_id',$class_id)->where('exam_type_id',$exam_id)->where('id_no',$id_no)->get();
+            $allGrade = MarkGrade::all();
+            return view('backend.report.pdf.marksheet-print',compact('count_fail','allMarks','allGrade'));
+        }else{
+            Session::flash('error','Sorry this Criteria Does not Match');
+        return redirect()->back();
+        }
+
     }
 
     public function idCardView(){

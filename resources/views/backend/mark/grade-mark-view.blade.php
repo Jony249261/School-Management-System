@@ -58,10 +58,10 @@
                   <tr class="{{$row->id}}">
                     <th>{{$key+1}}</th>
                     <th>{{$row->grade_name}}</th>
-                    <th>{{$row->grade_point}}</th>
+                    <th>{{number_format((float)$row->grade_point,2)}}</th>
                     <th>{{$row->start_mark}}</th>
                     <th>{{$row->end_mark}}</th>
-                    <th>{{$row->start_point}} - {{$row->end_point}}</th>
+                    <th>{{number_format((float)$row->grade_point,2)}} - {{($row->grade_point == 5)?(number_format((float)$row->grade_point,2)):(number_format((float)$row->grade_point+1,2)-(float)0.01)}}</th>
                     <th>{{$row->remarks}}</th>
                     <th>
                         <a title="Edit Attendence" href="{{route('marks.grade.edit',$row->id)}}" class="btn btn-info btn-sm"> <i class="fa fa-edit"></i></a>
