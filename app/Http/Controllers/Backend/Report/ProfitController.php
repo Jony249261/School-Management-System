@@ -103,6 +103,20 @@ class ProfitController extends Controller
     }
 
     public function idCardGet(Request $request){
+        $year_id = $request->year_id;
+        $class_id = $request->class_id;
+
+        $check_data = AssignStudent::where('year_id',$year_id)->where('class_id',$class_id)->first();
+        if($check_data == true){
+            $data = AssignStudent::where('year_id',$year_id)->where('class_id',$class_id)->get();
+            //dd($data)->toArray();
+            $pdf = PDF::loadView('backend.report.pdf.id-card-pdf', compact('data'));
+            $pdf->SetProtection(['copy', 'print'], '', 'pass');
+            return $pdf->stream('document.pdf');
+        }else{
+            Session::flash('error','Sorry this Criteria Does not Match');
+        return redirect()->back();
+        }
 
     }
 
