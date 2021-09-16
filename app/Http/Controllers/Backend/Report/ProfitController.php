@@ -87,7 +87,35 @@ class ProfitController extends Controller
         if($singleStudent == true){
             $allMarks = StudentMark::with(['assign_subject','year'])->where('year_id',$year_id)->where('class_id',$class_id)->where('exam_type_id',$exam_id)->where('id_no',$id_no)->get();
             $allGrade = MarkGrade::all();
-            return view('backend.report.pdf.marksheet-print',compact('count_fail','allMarks','allGrade'));
+            return view('backend.report.pdf.marksheet-print',compact('count_fail','allMarks','allGrade','singleStudent'));
+        }else{
+            Session::flash('error','Sorry this Criteria Does not Match');
+        return redirect()->back();
+        }
+
+    }
+
+    public function marksheetPdf($id){
+        $data = StudentMark::findOrFail($id);
+        //dd($data);
+        $year_id = $data->year_id;
+        $class_id = $data->class_id;
+        $exam_type_id = $data->exam_type_id;
+        $id_no = $data->id_no;
+
+        $count_fail = StudentMark::where('year_id',$year_id)->where('class_id',$class_id)->where('exam_type_id',$exam_type_id)->where('id_no',$id_no)->where('marks','<','33')->get()->count();
+        //dd($count_fail)->toArray();
+        
+        $singleStudent = StudentMark::where('year_id',$year_id)->where('class_id',$class_id)->where('exam_type_id',$exam_type_id)->where('id_no',$id_no)->first();
+        if($singleStudent == true){
+            
+            $allMarks = StudentMark::where('year_id',$year_id)->where('class_id',$class_id)->where('exam_type_id',$exam_type_id)->where('id_no',$id_no)->get();
+            //dd($allMarks)->toArray();
+            $allGrade = MarkGrade::all();
+            
+            $pdf = PDF::loadView('backend.report.pdf.mark-sheet-pdf', compact('allMarks','allGrade','count_fail'));
+            $pdf->SetProtection(['copy', 'print'], '', 'pass');
+            return $pdf->stream('document.pdf');
         }else{
             Session::flash('error','Sorry this Criteria Does not Match');
         return redirect()->back();
@@ -111,6 +139,33 @@ class ProfitController extends Controller
             $data = AssignStudent::where('year_id',$year_id)->where('class_id',$class_id)->get();
             //dd($data)->toArray();
             $pdf = PDF::loadView('backend.report.pdf.id-card-pdf', compact('data'));
+            $pdf->SetProtection(['copy', 'print'], '', 'pass');
+            return $pdf->stream('document.pdf');
+        }else{
+            Session::flash('error','Sorry this Criteria Does not Match');
+        return redirect()->back();
+        }
+
+    }
+
+
+    public function resultView(){
+        $years = StudentYear::orderBy('id','DESC')->get();
+        $classes = StudentClass::all();
+        $exams = ExamType::all();
+        return view('backend.report.result-view',compact('years','classes','exams'));
+
+    }
+
+        public function resultGet(Request $request){
+        $year_id = $request->year_id;
+        $class_id = $request->class_id;
+        $exam_id = $request->exam_id;
+        $singleStudent = StudentMark::where('year_id',$year_id)->where('class_id',$class_id)->where('exam_type_id',$exam_id)->first();
+        if($singleStudent == true){
+
+            $data = StudentMark::select('class_id','year_id','exam_type_id','student_id')->where('year_id',$year_id)->where('class_id',$class_id)->where('exam_type_id',$exam_id)->groupBy('year_id')->groupBy('class_id')->groupBy('student_id')->groupBy('exam_type_id')->get();
+            $pdf = PDF::loadView('backend.report.pdf.result-pdf', compact('data'));
             $pdf->SetProtection(['copy', 'print'], '', 'pass');
             return $pdf->stream('document.pdf');
         }else{

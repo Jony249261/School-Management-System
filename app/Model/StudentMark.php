@@ -23,4 +23,7 @@ class StudentMark extends Model
     public function examType(){
         return $this->belongsTo(ExamType::class,'exam_type_id', 'id');
     }
+    public function assignStudent(){
+        return $this->belongsTo(AssignStudent::class,'student_id', 'student_id');
+    }
 }

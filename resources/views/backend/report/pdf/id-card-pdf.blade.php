@@ -57,6 +57,10 @@
             .table-bodered thead th, .table-bodered td, .table-bodered th{
                 boder:1px solid black !important;
             }
+            .image{
+                boder:1px solid blue !important;
+                border-radius:100%  !important;
+            }
 
         </style>
     </head>
@@ -65,7 +69,7 @@
             @foreach($data as $row)
             <div class="row" style="margin-bottom:20px">
                 <div class="col-md-3" style="border: 1px solid #000; margin:0px 110px 0px 110px">
-                    <table border="0" width="100%">
+                    <table border="0" width="100%" style="background-color:blue">
                         <tbody>
                             <tr>
                                 <td width="30%" style="padding:10px">
@@ -75,8 +79,8 @@
                                     <p style="color:red; font-size:20px;margin-botom:5px !important"><strong>ABC School</strong></p><br>
                                     <p class="btn btn-primary" style="padding:5px ; font-size:20px">Student ID Card</p>
                                 </td>
-                                <td width="30%" class="text-right" style="padding:10px">
-                                    <img src="{{url('public/upload/student_images/'.$row->student->image)}}" alt="" style="height:73px; width:63px; border-radious:5px">
+                                <td width="30%" class="text-right image" style="padding:10px">
+                                    <img src="{{url('public/upload/student_images/'.$row->student->image)}}"  alt="" style="height:73px; width:63px; border-radious:5px">
                                 </td>
                             </tr>
                             <tr>

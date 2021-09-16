@@ -272,11 +272,16 @@ Route::prefix('report')->group(function(){
 
     Route::get('/marksheet/view', 'Backend\Report\ProfitController@marksheetView')->name('report.marksheet.view');
     Route::get('/marksheet/get', 'Backend\Report\ProfitController@marksheetGet')->name('report.marksheet.get');
+    Route::get('/marksheet/get/{id}', 'Backend\Report\ProfitController@marksheetPdf')->name('report.marksheet.pdf');
 
     //Id-card Routes
 
     Route::get('/id-card/view', 'Backend\Report\ProfitController@idCardView')->name('report.id-card.view');
     Route::get('/id-card/get', 'Backend\Report\ProfitController@idCardGet')->name('report.id-card.get');
+    
+    //Result Route
+    Route::get('/result/view', 'Backend\Report\ProfitController@resultView')->name('report.result.view');
+    Route::get('/result/get', 'Backend\Report\ProfitController@resultGet')->name('report.result.get');
 });
 
 

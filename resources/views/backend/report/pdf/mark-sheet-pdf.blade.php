@@ -1,44 +1,67 @@
-@extends('backend.layouts.master')
-@section('content')
+<!DOCTYPE html>
 
-<!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Manage MarkShett</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">MarkShett</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+    <head>
+        <title>Student ID Card</title>
+          <link rel="stylesheet" href="{{asset('public/backend/plugins')}}/icheck-bootstrap/icheck-bootstrap.min.css">
+        <style>
+            table{
+                border-collapse:collapse;
+            }
+            h2 h3{
+                margin:0;
+                padding: 0;
+            }
+            .table{
+                width:100%;
+                margin-bottom:1rem;
+                background-color:transparent;
+            }
+            .table th,
+            .table td{
+                padding:0.75rem;
+                vertical-align:top;
+                border-top:1px solid #dee2e6;
+            }
+            .table thead th{
+                vertical-align:bottom;
+                boder-bottom:2px solid #dee2e6;
+            }
+            .table tbody + tbody{
+                border-top:2px solid #dee2e6;
+            }
+            .table{
+                background-color:#fff;
+            }
+            .table-bodered{
+                border:1px solid #dee2e6;
+            }
+            .table-bodered th,
+            .table-bodered td{
+                border:1px solid #dee2e6;
+            }
+            .table-bodered thead th,
+            .table-bodered thead td{
+                border-bottom-width:2px;
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <!-- /.row -->
-        <!-- Main row -->
-        <div class="row">
-          <!-- Left col -->
-          <section class="col-lg-12 connectedSortable">
-            <!-- Custom tabs (Charts with tabs)-->
-            <div class="card">
-              <div class="card-header bg-primary">
-                <h3>
-                  <i class="fas fa-users mr-1"></i>
-                  Mark Sheet
-                </h3>
-              </div><!-- /.card-header -->
-              <div class="card-body">
+            }
+            .text-center{
+                text-align:center;
+            }
+            .text-right{
+                text-align:right;
+            }
+
+            table tr td{
+                padding:5px;
+            }
+            .table-bodered thead th, .table-bodered td, .table-bodered th{
+                boder:1px solid black !important;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="card-body">
                   <div style="border:solid 2px; padding:7px">
                     <div class="row">
                         <div class="col-md-2 text-center" style="float:right">
@@ -240,16 +263,5 @@
                     </div>
                   </div>
               </div>
-              <!--<a type="submit" class="btn btn-success btn-sm" href="{{route('report.marksheet.pdf',$singleStudent->id)}}">PDF</a>
--->
-            </div>
-          </section>
-          <!-- /.Left col -->
-        </div>
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-@endsection
+    </body>
+</html>
