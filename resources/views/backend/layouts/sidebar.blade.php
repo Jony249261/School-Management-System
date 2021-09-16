@@ -325,6 +325,12 @@
                   <p>Student ID Card</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('report.attendence.view')}}" class="nav-link {{($route=='report.attendence.view')?'active':''}}">
+                  <i class="far fa-user-circle nav-icon"></i>
+                  <p>Attendence Report</p>
+                </a>
+              </li>
 
             </ul>
           </li>

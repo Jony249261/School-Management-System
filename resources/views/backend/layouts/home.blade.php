@@ -30,14 +30,17 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                @php 
+                $student = App\User::where('usertype','student')->count();
+                @endphp
+                <h3>{{$student}}</h3>
 
-                <p>New Orders</p>
+                <p>Total Student</p>
               </div>
               <div class="icon">
-                <i class="ion ion-bag"></i>
+                <i class="fas fa-user-graduate"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{route('students.registration.view')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -45,14 +48,17 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                @php 
+                $employee = App\User::where('usertype','employee')->count();
+                @endphp
+                <h3>{{$employee}}</h3>
 
-                <p>Bounce Rate</p>
+                <p>Total Employee</p>
               </div>
               <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+                <i class="fas fa-user-tie"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{route('employee.registration.view')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -65,7 +71,7 @@
                 @endphp
                 <h3>{{$user}}</h3>
 
-                <p>User Registrations</p>
+                <p>Total User</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
